@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <title>Superhero add form</title>
+  <link rel="stylesheet" href="/main.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<form method="post" action="#" th:action="@{/superhero/add}" th:object="${superhero}">
+  <div>
+    <label for="hero_name">Hero Name:</label>
+    <input type="text" id="hero_name" th:field="*{hero_name}">
+  </div>
+  <div>
+    <label for="real_name">Real Name:</label>
+    <input type="text" id="real_name" th:field="*{real_name}">
+  </div>
+  <div>
+    <label for="creation_year">Creation Year:</label>
+    <input type="date" id="creation_year" th:field="*{creation_year}">
+  </div>
+  <div>
+    <label for="city">City:</label>
+    <select id="city" th:field="*{city}">
+      <option value="">--Select a city--</option>
+      <option th:each="city : ${cities}" th:value="${city}" th:text="${city}"></option>
+    </select>
+  </div>
+  <div>
+    <label for="powers">Powers:</label>
+    <select multiple id="powers" th:field="*{powers}">
+      <option th:each="power : ${powers}" th:value="${power.getSuperpower_id()}" th:text="${power.getSuperpower()}"></option>
+    </select>
+  </div>
+  <div>
+    <button type="submit">Add Superhero</button>
+  </div>
+</form>
+
+<br>
+
+<a th:href="@{herolist}"><button>Go back to index</button></a>
+
+</body>
+</html>

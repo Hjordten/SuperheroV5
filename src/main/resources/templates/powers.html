@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Powers</title>
+    <link rel="stylesheet" href="/main.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<h1>Powers for: <span th:text="${hero.getHero_name()}"></span></h1>
+<table>
+    <tr>
+        <th>Powers</th>
+    </tr>
+    <tr th:each="power : ${hero.getPowers()}">
+        <td th:text="${power}"></td>
+    </tr>
+</table>
+
+<br>
+
+<a th:href="@{herolist}"><button>Go back to index</button></a>
+
+</body>
+</html>

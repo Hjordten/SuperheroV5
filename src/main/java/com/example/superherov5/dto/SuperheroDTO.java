@@ -13,8 +13,6 @@ public class SuperheroDTO {
     public SuperheroDTO() {
     }
 
-
-
     public String getSuperhero_id() {
         return superhero_id;
     }

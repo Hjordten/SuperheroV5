@@ -10,7 +10,7 @@
 
 <body>
 
-<form method="post" action="#" th:action="@{/superhero/add}" th:object="${superhero}">
+<form method="post" action="#" th:action="@{add}" th:object="${superhero}">
   <div>
     <label for="hero_name">Hero Name:</label>
     <input type="text" id="hero_name" th:field="*{hero_name}">
@@ -34,10 +34,10 @@
         <label for="powers">Powers:</label>
         <br>
         <div id="powers" th:each="power : ${powers}">
-            <input type="checkbox" id="power" th:name="powers" th:value="${power}" th:text="${power}">
-            <label th:for="power" th:text="${power}"></label>
+            <input type="checkbox" th:name="powers" th:value="${power}" th:text="${power}">
             <br>
         </div>
+    </div>
     </div>
 
     <div>

@@ -16,7 +16,6 @@ public class Superherocontroller_DB {
     @Autowired
     private SuperheroRepo superheroRepo;
 
-
     @GetMapping("herolist")
     public String heroList(Model model) {
         List<SuperheroDTO> heroList = superheroRepo.getSuperheroes();
@@ -48,22 +47,12 @@ public class Superherocontroller_DB {
         return "addSuperheroForm";
     }
 
-
+    @PostMapping("/add")
+    public String addSuperhero(@ModelAttribute("superheroDto") SuperheroAddToDatabaseDTO superheroDto) {
+        superheroRepo.addSuperheroToDatabase(superheroDto);
+        return "redirect:/superheroes/herolist";
+    }
 
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

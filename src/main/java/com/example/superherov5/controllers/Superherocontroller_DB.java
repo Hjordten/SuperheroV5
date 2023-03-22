@@ -50,7 +50,7 @@ public class Superherocontroller_DB {
     @PostMapping("/add")
     public String addSuperhero(@ModelAttribute("superheroDto") SuperheroAddToDatabaseDTO superheroDto) {
         superheroRepo.addSuperheroToDatabase(superheroDto);
-        return "redirect:/superheroes/herolist";
+        return "redirect:/herolist";
     }
 
 

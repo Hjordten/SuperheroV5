@@ -100,8 +100,6 @@ public class SuperheroRepo {
 
     public void addSuperheroToDatabase(SuperheroAddToDatabaseDTO form) {
         try (Connection con = DriverManager.getConnection(db_url, uid, pwd)) {
-
-            // ID's
             int cityId = 0;
             int heroId = 0;
             List<Integer> powerIDs = new ArrayList<>();
@@ -129,18 +127,18 @@ public class SuperheroRepo {
             }
 
             // Find power_ids
-            String SQL3 = "SELECT superpower_id FROM superpower WHERE name = ?;";
+            String SQL3 = "SELECT superpower_id FROM superpower WHERE superpower = ?;";
             pstmt = con.prepareStatement(SQL3);
             for (String power : form.getPowers()) {
                 pstmt.setString(1, power);
                 rs = pstmt.executeQuery();
                 if (rs.next()) {
-                    powerIDs.add(rs.getInt("power_id"));
+                    powerIDs.add(rs.getInt("superpower_id"));
                 }
             }
 
             // Insert entries in superhero_powers join table
-            String SQL4 = "INSERT INTO superhero_powers VALUES (?, ?, 'high');";
+            String SQL4 = "INSERT INTO superheropower (superhero_id, superpower_id) VALUES (?, ?);";
             pstmt = con.prepareStatement(SQL4);
             for (int i = 0; i < powerIDs.size(); i++) {
                 pstmt.setInt(1, heroId);
@@ -151,6 +149,7 @@ public class SuperheroRepo {
             throw new RuntimeException(e);
         }
     }
+
 
 
 }

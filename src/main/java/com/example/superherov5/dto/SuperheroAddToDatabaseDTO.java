@@ -9,10 +9,10 @@ public class SuperheroAddToDatabaseDTO {
     private String creation_year;
     private String city;
     private List<String> powers = new ArrayList<>();
+    private List<String> cities = new ArrayList<>();
 
     public SuperheroAddToDatabaseDTO() {
     }
-
 
     public void setHero_name(String hero_name) {
         this.hero_name = hero_name;
@@ -34,6 +34,9 @@ public class SuperheroAddToDatabaseDTO {
         this.powers = powers;
     }
 
+    public void setCities(List<String> cities) {
+        this.cities = cities;
+    }
 
     public String getHero_name() {
         return hero_name;
@@ -54,6 +57,8 @@ public class SuperheroAddToDatabaseDTO {
     public List<String> getPowers() {
         return powers;
     }
+
+    public List<String> getCities() {
+        return cities;
+    }
 }
-
-

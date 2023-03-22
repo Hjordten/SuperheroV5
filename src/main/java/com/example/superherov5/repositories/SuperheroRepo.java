@@ -68,6 +68,37 @@ public class SuperheroRepo {
         return superhero;
     }
 
+    public List<String> getCities() {
+        List<String> cities = new ArrayList<>();
+        try (Connection con = DriverManager.getConnection(db_url, uid, pwd)) {
+            String SQL = "SELECT * FROM city";
+            PreparedStatement preparedStatement = con.prepareStatement(SQL);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                cities.add(resultSet.getString("city"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return cities;
+    }
+
+    public List<String> getPowers() {
+        List<String> powers = new ArrayList<>();
+        try (Connection con = DriverManager.getConnection(db_url, uid, pwd)) {
+            String SQL = "SELECT * FROM superpower";
+            PreparedStatement preparedStatement = con.prepareStatement(SQL);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                powers.add(resultSet.getString("superpower"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return powers;
+    }
+
+
 
 
 

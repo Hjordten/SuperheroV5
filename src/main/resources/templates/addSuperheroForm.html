@@ -6,8 +6,9 @@
   <link rel="stylesheet" href="/main.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
+
+<body>
 
 <form method="post" action="#" th:action="@{/superhero/add}" th:object="${superhero}">
   <div>
@@ -29,13 +30,17 @@
       <option th:each="city : ${cities}" th:value="${city}" th:text="${city}"></option>
     </select>
   </div>
-  <div>
-    <label for="powers">Powers:</label>
-    <select multiple id="powers" th:field="*{powers}">
-      <option th:each="power : ${powers}" th:value="${power.getSuperpower_id()}" th:text="${power.getSuperpower()}"></option>
-    </select>
-  </div>
-  <div>
+    <div>
+        <label for="powers">Powers:</label>
+        <br>
+        <div id="powers" th:each="power : ${powers}">
+            <input type="checkbox" id="power" th:name="powers" th:value="${power}" th:text="${power}">
+            <label th:for="power" th:text="${power}"></label>
+            <br>
+        </div>
+    </div>
+
+    <div>
     <button type="submit">Add Superhero</button>
   </div>
 </form>

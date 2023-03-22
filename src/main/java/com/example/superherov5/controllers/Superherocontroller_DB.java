@@ -36,9 +36,19 @@ public class Superherocontroller_DB {
         // Create a new SuperheroAddToDatabaseDTO object and add it to the model
         model.addAttribute("superhero", new SuperheroAddToDatabaseDTO());
 
+        // Retrieve the lists of cities and powers from the database
+        List<String> cities = superheroRepo.getCities();
+        List<String> powers = superheroRepo.getPowers();
+
+        // Add the lists to the model
+        model.addAttribute("cities", cities);
+        model.addAttribute("powers", powers);
+
         // Return the name of the Thymeleaf template that displays the add superhero form
         return "addSuperheroForm";
     }
+
+
 
 
 

@@ -30,7 +30,7 @@ public class Superherocontroller_DB {
         return "powers";
     }
 
-    @GetMapping("/add")
+    @GetMapping("add")
     public String showAddSuperheroForm(Model model) {
         // Create a new SuperheroAddToDatabaseDTO object and add it to the model
         model.addAttribute("superhero", new SuperheroAddToDatabaseDTO());
@@ -47,10 +47,10 @@ public class Superherocontroller_DB {
         return "addSuperheroForm";
     }
 
-    @PostMapping("/add")
+    @PostMapping("add")
     public String addSuperhero(@ModelAttribute("superheroDto") SuperheroAddToDatabaseDTO superheroDto) {
         superheroRepo.addSuperheroToDatabase(superheroDto);
-        return "redirect:/herolist";
+        return "redirect:herolist";
     }
 
 

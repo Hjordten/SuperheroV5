@@ -32,7 +32,7 @@ public class SuperheroRepo {
                 superhero.setHero_name(resultSet.getString("hero_name"));
                 superhero.setReal_name(resultSet.getString("real_name"));
                 superhero.setCreation_year(resultSet.getString("creation_year"));
-                superhero.setSuperhero_id(resultSet.getString("superhero_id"));
+                superhero.setSuperhero_id(Integer.parseInt(resultSet.getString("superhero_id")));
                 superheroes.add(superhero);
             }
         } catch (SQLException e) {
@@ -151,5 +151,18 @@ public class SuperheroRepo {
     }
 
 
+    public void deleteSuperhero(int superheroId) {
+        try (Connection con = DriverManager.getConnection(db_url, uid, pwd)) {
+            String SQL = "DELETE FROM superhero WHERE superhero_id = ?";
+            PreparedStatement pstmt = con.prepareStatement(SQL);
+            pstmt.setInt(1, superheroId);
+            pstmt.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
 
 }
+

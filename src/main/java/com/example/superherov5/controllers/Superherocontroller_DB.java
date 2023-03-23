@@ -30,6 +30,13 @@ public class Superherocontroller_DB {
         return "powers";
     }
 
+    @PostMapping("/delete/{superhero_id}")
+    public String deleteSuperhero(@RequestParam int superhero_id) {
+        superheroRepo.deleteSuperhero(superhero_id);
+        return "redirect:herolist";
+    }
+
+
     @GetMapping("add")
     public String showAddSuperheroForm(Model model) {
         // Create a new SuperheroAddToDatabaseDTO object and add it to the model
@@ -52,7 +59,6 @@ public class Superherocontroller_DB {
         superheroRepo.addSuperheroToDatabase(superheroDto);
         return "redirect:herolist";
     }
-
 
 
 }

@@ -6,30 +6,38 @@
     <link rel="stylesheet" href="/main.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 </head>
 
 <body>
+<table>
+    <tr>
+        <th>Superhero Name</th>
+        <th>Real Name</th>
+        <th>Creation Year</th>
+        <th>Press button to see powers</th>
+        <th>Delete</th>
+    </tr>
+    <tr th:each="hero : ${heroList}">
+        <td th:text="${hero.getHero_name()}"></td>
+        <td th:text="${hero.getReal_name()}"></td>
+        <td th:text="${hero.getCreation_year()}"></td>
+        <td><a th:href="@{powers(superhero_id=${hero.getSuperhero_id()})}"><button>Powers</button></a></td>
+        <td>
+            <form th:action="@{/superhero/delete/(superhero_id=${hero.getSuperhero_id()})}" method="POST">
+                <button type="submit">Delete</button>
+            </form>
 
-    <table>
-        <tr>
-            <th>Superhero Name</th>
-            <th>Real Name</th>
-            <th>Creation Year</th>
-        </tr>
 
-        <tr th:each="hero : ${heroList}">
-            <td th:text="${hero.getHero_name()}"></td>
-            <td th:text="${hero.getReal_name()}"></td>
-            <td th:text="${hero.getCreation_year()}"></td>
-            <td><a th:href="@{powers(superhero_id=${hero.getSuperhero_id()})}"><button>Powers</button></a></td>
-        </tr>
 
-    </table>
+        </td>
+    </tr>
+</table>
 
-    <br>
+<br>
 
-    <a th:href="@{add}"><button>Add Superhero</button></a>
+<a th:href="@{add}"><button>Add Superhero</button></a>
 
 </body>
 </html>
+
+

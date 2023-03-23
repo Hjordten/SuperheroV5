@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class SuperheroDTO {
-    private String superhero_id;
+    private int superhero_id;
     private String hero_name;
     private String real_name;
     private String creation_year;
@@ -13,7 +13,7 @@ public class SuperheroDTO {
     public SuperheroDTO() {
     }
 
-    public String getSuperhero_id() {
+    public int getSuperhero_id() {
         return superhero_id;
     }
 
@@ -37,7 +37,7 @@ public class SuperheroDTO {
         powers.add(superpower_id);
     }
 
-    public void setSuperhero_id(String superhero_id) {
+    public void setSuperhero_id(int superhero_id) {
         this.superhero_id = superhero_id;
     }
 

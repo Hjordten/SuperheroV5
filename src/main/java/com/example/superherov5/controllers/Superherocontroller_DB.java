@@ -30,10 +30,10 @@ public class Superherocontroller_DB {
         return "powers";
     }
 
-    @PostMapping("/delete/{superhero_id}")
-    public String deleteSuperhero(@RequestParam int superhero_id) {
+    @PostMapping("/delete/")
+    public String deleteSuperhero(@RequestParam ("superhero_id") int superhero_id) {
         superheroRepo.deleteSuperhero(superhero_id);
-        return "redirect:herolist";
+        return "redirect:../herolist";
     }
 
 

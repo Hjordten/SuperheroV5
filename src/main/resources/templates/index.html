@@ -15,7 +15,8 @@
         <th>Real Name</th>
         <th>Creation Year</th>
         <th>Press button to see powers</th>
-        <th>Delete</th>
+        <th>Press button to delete</th>
+        <th>Press button to edit</th>
     </tr>
     <tr th:each="hero : ${heroList}">
         <td th:text="${hero.getHero_name()}"></td>
@@ -26,10 +27,8 @@
             <form th:action="@{/superhero/delete/(superhero_id=${hero.getSuperhero_id()})}" method="POST">
                 <button type="submit">Delete</button>
             </form>
-
-
-
         </td>
+        <td><a th:href="@{edit(superhero_id=${hero.getSuperhero_id()})}"><button>Powers</button></a></td>
     </tr>
 </table>
 

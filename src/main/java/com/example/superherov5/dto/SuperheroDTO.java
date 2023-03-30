@@ -8,9 +8,18 @@ public class SuperheroDTO {
     private String hero_name;
     private String real_name;
     private String creation_year;
+    private String city;
     private List<String> powers = new ArrayList<>();
 
     public SuperheroDTO() {
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public int getSuperhero_id() {
@@ -53,5 +62,4 @@ public class SuperheroDTO {
         this.creation_year = creation_year;
     }
 }
-
 

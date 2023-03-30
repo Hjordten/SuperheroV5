@@ -2,6 +2,7 @@ package com.example.superherov5.repositories;
 
 import com.example.superherov5.dto.SuperheroAddToDatabaseDTO;
 import com.example.superherov5.dto.SuperheroDTO;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class SuperheroRepo {
+@Qualifier("superhero_db")
+public class SuperheroRepo implements ISuperheroRepository {
 
     @Value("${spring.datasource.url}")
     private String db_url;
@@ -165,4 +167,3 @@ public class SuperheroRepo {
 
 
 }
-
